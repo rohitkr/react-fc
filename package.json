@@ -1,0 +1,23 @@
+{
+  "name": "react-fc",
+  "version": "1.0.0",
+  "description": "Sample for FC react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "babel ./samples/react/script.js -o ./samples/react/compiled.js",
+    "browserify": "browserify ./samples/node/script.js > ./samples/node/compiled.js",
+    "build": "npm run babel && npm run browserify"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-es2015": "^6.18.0",
+    "browserify": "^13.1.1",
+    "fusioncharts": "3.11.2",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  }
+}
