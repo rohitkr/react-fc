@@ -54,7 +54,7 @@ server.set('view engine', 'ejs')
 // Render the ejs template
 server.get('/ejs', (req, res) => {
 	res.render('index', {
-		content: 'express js content for server.js'
+		content: 'This content is rendering from server.js'
 	});
 })
 

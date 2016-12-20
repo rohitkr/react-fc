@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/app';
 
 // import FusionCharts from 'fusioncharts';
-import react_fc from '../react-fusioncharts/react-fusioncharts';
+// import react_fc from '../react-fusioncharts/react-fusioncharts';
 
 
 // React = require('react');
@@ -35,14 +35,13 @@ var config = {
 };
 
 ReactDOM.render(
-	<App />,
+	<App msg='Sample for FusionCharts npm module' />,
 	document.getElementById('root')
 );
 
-ReactDOM.render(
-	<react_fc.FusionCharts {...config} />,
-	document.getElementById('root')
-);
 
-console.log('the value of fc is: ', App);
+// ReactDOM.render(
+// 	<react_fc.FusionCharts {...config} />,
+// 	document.getElementById('root')
+// );
 

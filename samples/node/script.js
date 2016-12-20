@@ -2,6 +2,7 @@ var React = require('react'),
 	ReactDOM = require('react-dom'),
     FusionCharts = require("fusioncharts");
 	charts = require("fusioncharts/fusioncharts.charts");
+	react_fc = require("../../react-fusioncharts/react-fusioncharts");
 
 
 
