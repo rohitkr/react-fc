@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js --ignore public/",
+    "dev": "webpack -wd",
     "babel": "babel ./samples/react/script.js -o ./samples/react/compiled.js",
     "browserify": "browserify ./samples/node/script.js > ./samples/node/compiled.js",
     "build": "npm run babel && npm run browserify"
@@ -16,8 +18,21 @@
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-es2015": "^6.18.0",
     "browserify": "^13.1.1",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
     "fusioncharts": "3.11.2",
+    "mongodb": "^2.2.16",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "eslint": "^3.12.2",
+    "nodemon": "^1.11.0",
+    "webpack": "^1.14.0"
   }
 }
