@@ -1,12 +1,19 @@
 import React from 'react';
 import FusionCharts from 'fusioncharts';
+// import Map from 'fusioncharts/fusioncharts.maps';
 import Charts from 'fusioncharts/fusioncharts.charts';
+// import USA from 'fusioncharts/maps/fusioncharts.usa';
+
 Charts(FusionCharts);
+// Map(FusionCharts);
+// USA(FusionCharts);
 
 let react_fc = {
 }
 
 class fusioncharts extends React.Component {
+    displayName: "FusionCharts"
+
     constructor (props) {
         console.log('constructor called...');
 
@@ -70,11 +77,11 @@ class fusioncharts extends React.Component {
         	global.chartObj.setChartData(global.state.dataSource, global.state.dataFormat);
         }
         
-        // var arr_impacted_by = global.fc_configs.impactedBy;
-        // if (arr_impacted_by && arr_impacted_by.length > 0 && arr_impacted_by.indexOf(global.props.eventSource) > -1) {
-        //     global.chartObj.setChartAttribute(global.fc_configs);
-        //     global.chartObj.setChartData(global.fc_configs.dataSource);
-        // }
+        var arr_impacted_by = global.fc_configs.impactedBy;
+        if (arr_impacted_by && arr_impacted_by.length > 0 && arr_impacted_by.indexOf(global.props.eventSource) > -1) {
+            global.chartObj.setChartAttribute(global.fc_configs);
+            global.chartObj.setChartData(global.fc_configs.dataSource);
+        }
     }
 }
 

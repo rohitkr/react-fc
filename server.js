@@ -56,7 +56,13 @@ server.get('/ejs', (req, res) => {
 	res.render('index', {
 		content: 'This content is rendering from server.js'
 	});
-})
+});
+server.get('/*.json', (req, res) => {
+	res.send({data: [{value: 50}, {value: 40}, {value: 70}]});
+});
+server.get('/*.xml', (req, res) => {
+	res.send('<chart> <set value="30" /> <set value="70" /> <set value="40" /> </chart>');
+});
 
 server.listen(config.port, () => {
 	console.log('Express listening on port ', config.port);
