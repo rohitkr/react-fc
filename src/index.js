@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app';
+import react_fc from './components/react-fusioncharts';
 
 // import FusionCharts from 'fusioncharts';
 // import react_fc from '../react-fusioncharts/react-fusioncharts';
@@ -34,14 +35,14 @@ var config = {
   	dataSource: {data: [{value: 500}, {value: 400}, {value: 600}]}
 };
 
-ReactDOM.render(
-	<App msg='Sample for FusionCharts npm module' />,
-	document.getElementById('root')
-);
-
-
 // ReactDOM.render(
-// 	<react_fc.FusionCharts {...config} />,
+// 	<App msg='Sample for FusionCharts npm module' />,
 // 	document.getElementById('root')
 // );
+
+
+ReactDOM.render(
+	<react_fc.FusionCharts {...config} />,
+	document.getElementById('root')
+);
 

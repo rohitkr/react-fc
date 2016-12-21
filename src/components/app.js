@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from './header';
-import React_fc from './react-fusioncharts';
+import react_fc from './react-fusioncharts';
 
 
 const config = {
 	id: "revenue-chart",
-    renderAt: "revenue-chart-container",
+    // renderAt: "revenue-chart-container",
 	type: "column2d",
 	width:600,
     height: 400,
@@ -37,7 +37,7 @@ class App extends React.Component {
 					...
 				</div>
 				<div>
-					<React_fc {...config} />
+					<react_fc.FusionCharts {...config} />
 				</div>
 			</div>
 		);
