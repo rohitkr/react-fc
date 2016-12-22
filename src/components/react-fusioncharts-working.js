@@ -1,0 +1,73 @@
+
+'use strict';
+
+var FusionCharts = require('fusioncharts');
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var react_fc = {
+}
+
+class fusioncharts extends React.Component {
+    displayName () {
+        return ('FusionCharts');
+    }
+    constructor (props) {
+        super(props);
+
+        var global = this;
+        // Store the chart configuration in fc_configs
+        global.fc_configs = props;
+        global.state = props;
+    }
+    componentWillMount () {
+        
+        var global = this;
+
+        global.chartObj = new FusionCharts(this.state);
+        global.setState(function (prevState, props) {
+          return {
+            renderAt: (prevState.renderAt || props.renderAt) || global.chartObj.id + '-container'
+          }
+        });
+    }
+    componentDidMount () {
+        var global = this;
+        global.chartObj.render(global.state.renderAt);
+    }
+    componentWillUnmount () {
+        var global = this;
+        global.chartObj && global.chartObj.dispose();
+    }
+    componentDidUpdate () {
+        var global = this;
+        var arr_impacted_by;
+
+        if (global.fc_configs.type !== global.state.type) {
+          global.chartObj.chartType(global.state.type);
+        }
+
+        if (global.fc_configs.dataSource !== global.state.dataSource) {
+          global.chartObj.setChartData(global.state.dataSource, global.state.dataFormat);
+        }
+        
+        arr_impacted_by = global.fc_configs.impactedBy;
+        if (arr_impacted_by && arr_impacted_by.length > 0 && arr_impacted_by.indexOf(global.props.eventSource) > -1) {
+            global.chartObj.setChartAttribute(global.fc_configs);
+            global.chartObj.setChartData(global.fc_configs.dataSource);
+        }
+    }
+
+    render (props) {
+        var global = this;
+        
+        return (
+            React.createElement("div", {className: global.state.className, id: global.state.renderAt})
+        );
+    }
+}
+
+react_fc.FusionCharts = fusioncharts;
+
+module.exports = react_fc;
+
