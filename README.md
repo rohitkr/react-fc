@@ -1,10 +1,61 @@
 # react-fc
 
-## Dependency 
-npm install --save express mongodb
-npm install --save react react-dom
+__COMPONENT DESCRIPTION GOES HERE__
 
 
-## Dev-Dependency
-npm install --save-dev webpack
-npm install --save-dev babel-cli babel-loader babel-preset-es2015 babel-preset-stage-2 babel-preset-react
+## Demo & Examples
+
+Live demo: [rohitkr.github.io/react-fc](http://rohitkr.github.io/react-fc/)
+
+To build the examples locally, run:
+
+```
+npm install
+npm start
+```
+
+Then open [`localhost:8000`](http://localhost:8000) in a browser.
+
+
+## Installation
+
+The easiest way to use react-fc is to install it from NPM and include it in your own React build process (using [Browserify](http://browserify.org), [Webpack](http://webpack.github.io/), etc).
+
+You can also use the standalone build by including `dist/react-fc.js` in your page. If you use this, make sure you have already included React, and it is available as a global variable.
+
+```
+npm install react-fc --save
+```
+
+
+## Usage
+
+__EXPLAIN USAGE HERE__
+
+```
+var ReactFc = require('react-fc');
+
+<ReactFc>Example</ReactFc>
+```
+
+### Properties
+
+* __DOCUMENT PROPERTIES HERE__
+
+### Notes
+
+__ADDITIONAL USAGE NOTES__
+
+
+## Development (`src`, `lib` and the build process)
+
+**NOTE:** The source code for the component is in `src`. A transpiled CommonJS version (generated with Babel) is available in `lib` for use with node.js, browserify and webpack. A UMD bundle is also built to `dist`, which can be included without the need for any build system.
+
+To build, watch and serve the examples (which will also watch the component source), run `npm start`. If you just want to watch changes to `src` and rebuild `lib`, run `npm run watch` (this is useful if you are working with `npm link`).
+
+## License
+
+__PUT LICENSE HERE__
+
+Copyright (c) 2016 Rohit Kumar.
+
