@@ -1,3 +1,10 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import react_fc from 'react-fc';
+import FusionCharts from 'fusioncharts';
+import Chart from 'fusioncharts/fusioncharts.charts';
+import TM from 'fusioncharts/themes/fusioncharts.theme.ocean';
+
 FusionCharts.ready(function () {
     var props_column_chart = {
         id: "column_chart",

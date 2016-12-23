@@ -1,3 +1,15 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import react_fc from 'react-fc';
+import FusionCharts from 'fusioncharts';
+import Chart from 'fusioncharts/fusioncharts.charts';
+import Map from 'fusioncharts/fusioncharts.maps';
+import Usa from 'fusioncharts/maps/fusioncharts.usa';
+import TM from 'fusioncharts/themes/fusioncharts.theme.fint';
+
+
+Usa(FusionCharts);
+
 FusionCharts.ready(function () {
     var myDataSource = {
         "chart": {
@@ -593,8 +605,7 @@ FusionCharts.ready(function () {
         dataFormat: 'json',
         dataSource: myDataSource
     };
-console.log('this is 10')
-    window.ReactDOM.render(
+    ReactDOM.render(
         <react_fc.FusionCharts {...fc_configs_object} />,
         document.getElementById('fc_react_app')
     );

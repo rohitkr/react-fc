@@ -1,3 +1,9 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import react_fc from 'react-fc';
+import FusionCharts from 'fusioncharts';
+import Chart from 'fusioncharts/fusioncharts.charts';
+import TM from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
 var myDataSource = {
 	chart: {
@@ -42,5 +48,6 @@ var revenueChartConfigs = {
 
 ReactDOM.render(
 	<react_fc.FusionCharts {...revenueChartConfigs} />,
+	// React.createElement('div', null, 'Hello World!'),
 	document.getElementById('chart-container')
 );
