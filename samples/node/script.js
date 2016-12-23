@@ -1,27 +1,29 @@
-var React = require('react'),
-	ReactDOM = require('react-dom'),
-    FusionCharts = require("fusioncharts");
-	charts = require("fusioncharts/fusioncharts.charts");
-	react_fc = require("../../react-fusioncharts/react-fusioncharts");
+const React = require('react');
+const ReactDOM = require('react-dom');
+const FusionCharts = require('fusioncharts');
+require('fusioncharts/fusioncharts.charts')(FusionCharts);
+const react_fc = require('react-fusioncharts');
+
+// App = require('./components/app');
 
 
+var config = {
+	id: "revenue-chart",
+    renderAt: "revenue-chart-container",
+	type: "column2d",
+	width:600,
+    height: 400,
+  	dataFormat: "json",
+  	dataSource: {data: [{value: 500}, {value: 400}, {value: 600}]}
+};
 
-var element = React.createElement('div', { id: 'chart' });
+ReactDOM.render(
+	React.createElement('h2', null, 'Hello React!'),
+	document.getElementById('chartContainer')
+);
 
-ReactDOM.render(element, document.getElementById('react-app'), function () {
-	charts(FusionCharts);
-    // Construct the chart
-    ch = FusionCharts.render({
-		id: "revenue-chart",
-	    renderAt: "chart",
-		type: "column2d",
-		width:600,
-        height: 400,
-	  	dataFormat: "xml",
-    	dataSource: '<chart><set value="50"/> <set value="70"/> <set value="60"/> </chart>'
-    });
-});
-
-
-
+ReactDOM.render(
+	React.createElement(react_fc.FusionCharts, config, 'Hello React!'),
+	document.getElementById('chartContainer')
+);
 

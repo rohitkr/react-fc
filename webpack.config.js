@@ -1,4 +1,5 @@
 module.exports = {
+	// entry: "./react/react-fc.js",
 	entry: "./src/index.js",
 	output: {
 		path: __dirname + '/public',

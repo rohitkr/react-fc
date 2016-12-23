@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Building FusionCharts with React</title>
+</head>
+<body>
+	<div style="text-align:center;" id="chartContainer"></div>
+	<div style="text-align:center;" id="react-app"></div>
+	<script type="text/javascript" src="../../node_modules/react/dist/react.js"></script>
+	<script type="text/javascript" src="../../node_modules/react-dom/dist/react-dom.js"></script>
+	<script type="text/javascript" src="../../node_modules/fusioncharts/fusioncharts.js"></script>
+	<script type="text/javascript" src="../../node_modules/react-fusioncharts/dist/react-fusioncharts.js"></script>
+	<script type="text/javascript">
+
+
+var config = {
+	id: "revenue-chart",
+    renderAt: "revenue-chart-container",
+	type: "column2d",
+	width:600,
+    height: 400,
+  	dataFormat: "json",
+  	dataSource: {data: [{value: 500}, {value: 400}, {value: 600}]}
+};
+		ReactDOM.render(
+			React.createElement(react_fc.FusionCharts, config),
+			document.getElementById('chartContainer')
+		);
+
+		
+	</script>
+</body>
+</html>
