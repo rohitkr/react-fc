@@ -31,6 +31,7 @@ var taskConfig = {
 			'url-sample.html',
 			'./images/*.png',
 			'./src/js/*.js',
+			'./fonts/*',
 			'.gitignore'
 		],
 		scripts: [

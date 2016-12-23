@@ -4,9 +4,14 @@ import ReactFc from 'react-fc';
 import FusionCharts from 'fusioncharts';
 import Chart from 'fusioncharts/fusioncharts.charts';
 import FC from 'fusioncharts/fusioncharts.powercharts';
-import jQuery from 'jquery';
-import prism from 'prismjs';
+import $ from 'jquery';
+import Prism from 'prismjs';
+// import bootstrap from 'bootstrap';
 
+window.jQuery = $;
+
+// import bootstrap from 'bootstrap';
+window.bootstrap = require('bootstrap');
 
 var code = {
     "ex1": {
