@@ -15,11 +15,6 @@ var taskConfig = {
 	component: {
 		name: 'react_fc',
 		dependencies: [
-			// 'blacklist',
-   //          'classnames',
-   //          'react',
-   //          'react/addons'
-
 			'classnames',
 			'react',
 			'react-dom',
@@ -34,13 +29,15 @@ var taskConfig = {
 		files: [
 			'index.html',
 			'url-sample.html',
+			'./images/*.png',
+			'./src/js/*.js',
 			'.gitignore'
 		],
 		scripts: [
-			'example.js'
+			'script.js'
 		],
 		less: [
-			'example.less'
+			'style.less'
 		]
 	}
 
