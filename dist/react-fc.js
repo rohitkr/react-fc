@@ -20,14 +20,9 @@ var _react = (typeof window !== "undefined" ? window['React'] : typeof global !=
 
 var _react2 = _interopRequireDefault(_react);
 
-// import FusionCharts from 'fusioncharts';
-
-// var React = require('react');
-
 var FusionCharts = typeof window !== "undefined" ? window['FusionCharts'] : typeof global !== "undefined" ? global['FusionCharts'] : null;
 
 if (typeof FusionCharts === "undefined") {
-    // import FusionCharts from 'fusioncharts';
     FusionCharts = require('fusioncharts');
 }
 
@@ -104,7 +99,7 @@ var R_FC = (function (_React$Component) {
         value: function render(props) {
             var global = this;
 
-            return _react2['default'].createElement("div", { className: global.state.className, id: global.state.renderAt });
+            return _react2['default'].createElement('div', { className: global.state.className, id: global.state.renderAt });
         }
     }]);
 

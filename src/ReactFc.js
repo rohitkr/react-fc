@@ -1,5 +1,4 @@
 import React from 'react';
-// import FusionCharts from 'fusioncharts';
 
 var FusionCharts = (typeof window !== "undefined" ? window['FusionCharts'] : 
 		typeof global !== "undefined" ? global['FusionCharts'] : null);
@@ -65,7 +64,7 @@ class R_FC extends React.Component {
         var global = this;
         
         return (
-            React.createElement("div", {className: global.state.className, id: global.state.renderAt})
+        	<div className={global.state.className} id={global.state.renderAt} />
         );
     }
 }
