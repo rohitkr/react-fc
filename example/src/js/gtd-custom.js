@@ -4,6 +4,8 @@ import react_fc from 'react-fc';
 import FusionCharts from 'fusioncharts';
 import Chart from 'fusioncharts/fusioncharts.charts';
 import TM from 'fusioncharts/themes/fusioncharts.theme.ocean';
+import $ from 'jquery';
+
 
 var GTDDashboard = function (options) {
 
@@ -643,3 +645,6 @@ var GTDDashboard = function (options) {
         gangNameList(new_data);
     };
 };
+
+            var k = new GTDDashboard();
+            k.execute();

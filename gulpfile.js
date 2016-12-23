@@ -30,7 +30,7 @@ var taskConfig = {
 			'index.html',
 			'url-sample.html',
 			'./images/*.png',
-			// './js/ex1.js',
+			'./data/*',
 			'./views/*.html',
 			'./fonts/*',
 			'.gitignore'
