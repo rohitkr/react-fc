@@ -102,7 +102,7 @@ FusionCharts.ready(function () {
         dataSource: myDataSource
     };
 
-    React.render(
+    ReactDOM.render(
         <react_fc.FusionCharts {...revenueChartConfigs} />,
         document.getElementById('chart-container')
     );

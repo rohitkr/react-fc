@@ -30,12 +30,14 @@ var taskConfig = {
 			'index.html',
 			'url-sample.html',
 			'./images/*.png',
-			'./src/js/*.js',
+			// './js/ex1.js',
+			'./views/*.html',
 			'./fonts/*',
 			'.gitignore'
 		],
 		scripts: [
-			'script.js'
+			'script.js',
+			'./js/ex1.js'
 		],
 		less: [
 			'style.less'

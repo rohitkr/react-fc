@@ -141,7 +141,7 @@ FusionCharts.ready(function () {
         }
     });
 
-    React.render(
+    ReactDOM.render(
         <FCApp />,
         document.getElementById('fc_react_app')
     );

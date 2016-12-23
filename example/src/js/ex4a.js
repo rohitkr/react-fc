@@ -5,10 +5,10 @@ FusionCharts.ready(function () {
         type: "column2d",
         width:600,
         height: 400,
-        dataFormat: "jsonurl",
-        dataSource: "../data/data.json"
+        dataFormat: "xmlurl",
+        dataSource: "../data/data.xml"
     };
-    React.render(
+    ReactDOM.render(
         <react_fc.FusionCharts {...props_column_chart} />,
         document.getElementById('fc_react_app')
     );

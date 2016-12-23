@@ -189,7 +189,7 @@ FusionCharts.ready(function () {
         dataFormat: "json",
         dataSource: myDataSource
     };
-    React.render(
+    ReactDOM.render(
         <react_fc.FusionCharts {...props_multi_chart} />,
         document.getElementById('fc_react_app')
     );

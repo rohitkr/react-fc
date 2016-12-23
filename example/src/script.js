@@ -10,8 +10,8 @@ import Prism from 'prismjs';
 
 window.jQuery = $;
 
-// import bootstrap from 'bootstrap';
 window.bootstrap = require('bootstrap');
+window.ReactDOM = ReactDOM;
 
 var code = {
     "ex1": {

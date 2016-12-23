@@ -41,7 +41,7 @@ FusionCharts.ready(function () {
             }
         }
     };
-    React.render(
+    ReactDOM.render(
         <react_fc.FusionCharts {...props_column_chart} />,
         document.getElementById('fc_react_app')
     );

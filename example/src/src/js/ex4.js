@@ -8,7 +8,7 @@ FusionCharts.ready(function () {
         dataFormat: "jsonurl",
         dataSource: "../data/data.json"
     };
-    React.render(
+    ReactDOM.render(
         <react_fc.FusionCharts {...props_column_chart} />,
         document.getElementById('fc_react_app')
     );

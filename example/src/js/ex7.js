@@ -83,7 +83,7 @@ FusionCharts.ready(function () {
         }
     });
 
-    React.render(
+    ReactDOM.render(
         <FCDashboard />,
         document.getElementById('fc_react_app')
     );

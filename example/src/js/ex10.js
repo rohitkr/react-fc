@@ -593,8 +593,8 @@ FusionCharts.ready(function () {
         dataFormat: 'json',
         dataSource: myDataSource
     };
-
-    React.render(
+console.log('this is 10')
+    window.ReactDOM.render(
         <react_fc.FusionCharts {...fc_configs_object} />,
         document.getElementById('fc_react_app')
     );

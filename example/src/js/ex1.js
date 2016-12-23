@@ -1,3 +1,4 @@
+
 var myDataSource = {
 	chart: {
 	  	caption: "Harry's SuperMart",
@@ -28,6 +29,7 @@ var myDataSource = {
 		}
 	]
 	};
+
 var revenueChartConfigs = {
 	id: "revenue-chart",
     renderAt: "revenue-chart-container",
@@ -37,6 +39,7 @@ var revenueChartConfigs = {
   	dataFormat: "json",
   	dataSource: myDataSource
 };
+
 ReactDOM.render(
 	<react_fc.FusionCharts {...revenueChartConfigs} />,
 	document.getElementById('chart-container')
