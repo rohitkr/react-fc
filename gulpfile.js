@@ -28,6 +28,7 @@ var taskConfig = {
 		dist: 'example/dist',
 		files: [
 			'index.html',
+			'url-sample.html',
 			'.gitignore'
 		],
 		scripts: [

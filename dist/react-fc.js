@@ -20,26 +20,33 @@ var _react = (typeof window !== "undefined" ? window['React'] : typeof global !=
 
 var _react2 = _interopRequireDefault(_react);
 
-var _fusioncharts = require('fusioncharts');
+// import FusionCharts from 'fusioncharts';
 
-var _fusioncharts2 = _interopRequireDefault(_fusioncharts);
+// var React = require('react');
+
+var FusionCharts = typeof window !== "undefined" ? window['FusionCharts'] : typeof global !== "undefined" ? global['FusionCharts'] : null;
+
+if (typeof FusionCharts === "undefined") {
+    // import FusionCharts from 'fusioncharts';
+    FusionCharts = require('fusioncharts');
+}
 
 var react_fc = {};
 
-var fusioncharts = (function (_React$Component) {
-    _inherits(fusioncharts, _React$Component);
+var R_FC = (function (_React$Component) {
+    _inherits(R_FC, _React$Component);
 
-    _createClass(fusioncharts, [{
+    _createClass(R_FC, [{
         key: 'displayName',
         value: function displayName() {
             return 'FusionCharts';
         }
     }]);
 
-    function fusioncharts(props) {
-        _classCallCheck(this, fusioncharts);
+    function R_FC(props) {
+        _classCallCheck(this, R_FC);
 
-        _get(Object.getPrototypeOf(fusioncharts.prototype), 'constructor', this).call(this, props);
+        _get(Object.getPrototypeOf(R_FC.prototype), 'constructor', this).call(this, props);
 
         var global = this;
         // Store the chart configuration in fc_configs
@@ -47,13 +54,13 @@ var fusioncharts = (function (_React$Component) {
         global.state = props;
     }
 
-    _createClass(fusioncharts, [{
+    _createClass(R_FC, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
 
             var global = this;
 
-            global.chartObj = new _fusioncharts2['default'](this.state);
+            global.chartObj = new FusionCharts(this.state);
             global.setState(function (prevState, props) {
                 return {
                     renderAt: prevState.renderAt || props.renderAt || global.chartObj.id + '-container'
@@ -101,23 +108,12 @@ var fusioncharts = (function (_React$Component) {
         }
     }]);
 
-    return fusioncharts;
+    return R_FC;
 })(_react2['default'].Component);
 
-react_fc.FusionCharts = fusioncharts;
+react_fc.FusionCharts = R_FC;
 
 exports['default'] = react_fc;
-
-// var React = require('react');
-// var FusionCharts = require('fusioncharts');
-
-// var ReactFc = React.createClass({
-// 	render () {
-// 		return <div>react-fc</div>;
-// 	}
-// });
-
-// export default ReactFc;
 module.exports = exports['default'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})

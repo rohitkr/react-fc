@@ -1,9 +1,16 @@
 import React from 'react';
-import FusionCharts from 'fusioncharts';
+// import FusionCharts from 'fusioncharts';
+
+var FusionCharts = (typeof window !== "undefined" ? window['FusionCharts'] : 
+		typeof global !== "undefined" ? global['FusionCharts'] : null);
+
+if (typeof FusionCharts === "undefined") {
+	FusionCharts = require('fusioncharts');
+}
 
 var react_fc = {};
 
-class fusioncharts extends React.Component {
+class R_FC extends React.Component {
     displayName () {
         return ('FusionCharts');
     }
@@ -63,7 +70,7 @@ class fusioncharts extends React.Component {
     }
 }
 
-react_fc.FusionCharts = fusioncharts;
+react_fc.FusionCharts = R_FC;
 
 export default react_fc;
 

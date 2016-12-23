@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import ReactFc from 'react-fc';
 import FusionCharts from 'fusioncharts';
 import Chart from 'fusioncharts/fusioncharts.charts';
+import FC from 'fusioncharts/fusioncharts.powercharts';
 
 const React_fc = ReactFc.FusionCharts;
 
-Chart(FusionCharts);
+// Chart(FusionCharts);
 
 var config = {
-	type: "column2d",
+	type: "Spline",
 	width:600,
     height: 400,
   	dataFormat: "json",
