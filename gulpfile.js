@@ -13,7 +13,7 @@ var initGulpTasks = require('react-component-gulp-tasks');
 var taskConfig = {
 
 	component: {
-		name: 'ReactFc',
+		name: 'react_fc',
 		dependencies: [
 			'classnames',
 			'react',
@@ -29,13 +29,29 @@ var taskConfig = {
 		files: [
 			'index.html',
 			'url-sample.html',
+			'./images/*.png',
+			'./data/*',
+			'./views/*.html',
+			'./fonts/*',
 			'.gitignore'
 		],
 		scripts: [
-			'example.js'
+			'script.js',
+			'./js/ex1.js',
+			'./js/ex2.js',
+			'./js/ex3.js',
+			'./js/ex4.js',
+			'./js/ex4a.js',
+			'./js/ex5.js',
+			'./js/ex6.js',
+			'./js/ex7.js',
+			'./js/ex8.js',
+			'./js/ex9.js',
+			'./js/ex10.js',
+			'./js/gtd-custom.js'
 		],
 		less: [
-			'example.less'
+			'style.less'
 		]
 	}
 
