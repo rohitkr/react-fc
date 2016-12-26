@@ -1,9 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactFc from 'react-fc';
-import FusionCharts from 'fusioncharts';
-import Chart from 'fusioncharts/fusioncharts.charts';
-import FC from 'fusioncharts/fusioncharts.powercharts';
 import $ from 'jquery';
 import Prism from 'prismjs';
 // import bootstrap from 'bootstrap';

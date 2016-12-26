@@ -32,7 +32,8 @@ var taskConfig = {
 			'./images/*.png',
 			'./data/*',
 			'./views/*.html',
-			'./fonts/*',
+			// '../fonts/*',
+			'./css/*.css',
 			'.gitignore'
 		],
 		scripts: [
@@ -51,7 +52,7 @@ var taskConfig = {
 			'./js/gtd-custom.js'
 		],
 		less: [
-			'style.less'
+			'./css/style.less'
 		]
 	}
 

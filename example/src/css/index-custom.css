@@ -11,6 +11,11 @@ body {
   font-weight: bold;
 }
 
+#dashboard #dashboard-container object {
+  width: 1247px;
+  height: 770px;
+}
+
 pre {
     max-height: 305px;
 }
@@ -145,3 +150,5 @@ pre.code-tab {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+
