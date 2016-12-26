@@ -16,6 +16,18 @@ body {
   height: 770px;
 }
 
+#dashboard.tab-pane h3{
+  margin: 0px;
+  text-align: center;
+  font-family: "AvenirLTStd-Light",sans-serif;
+  text-transform: uppercase;
+  background-color: #0e2429;
+    color: #F6BD0F;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-top: -30px;
+}
+
 pre {
     max-height: 305px;
 }
