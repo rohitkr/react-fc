@@ -62,9 +62,7 @@ var revenueChartConfigs = {
 	dataSource: myDataSource
 };
 
-_reactDom2['default'].render(_react2['default'].createElement(_reactFc2['default'].FusionCharts, revenueChartConfigs),
-// React.createElement('div', null, 'Hello World!'),
-document.getElementById('chart-container'));
+_reactDom2['default'].render(_react2['default'].createElement(_reactFc2['default'].FusionCharts, revenueChartConfigs), document.getElementById('chart-container'));
 
 },{"fusioncharts":undefined,"fusioncharts/fusioncharts.charts":2,"fusioncharts/themes/fusioncharts.theme.ocean":3,"react":undefined,"react-dom":undefined,"react-fc":undefined}],2:[function(require,module,exports){
 /*
