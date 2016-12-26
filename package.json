@@ -15,6 +15,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "classnames": "^2.1.2",
+    "fusionmaps": "^3.11.3",
     "prism": "^1.0.0",
     "prismjs": "^1.6.0"
   },
