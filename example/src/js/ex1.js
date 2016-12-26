@@ -48,6 +48,5 @@ var revenueChartConfigs = {
 
 ReactDOM.render(
 	<react_fc.FusionCharts {...revenueChartConfigs} />,
-	// React.createElement('div', null, 'Hello World!'),
 	document.getElementById('chart-container')
 );
