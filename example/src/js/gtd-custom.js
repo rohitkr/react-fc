@@ -3,26 +3,32 @@ import ReactDOM from 'react-dom';
 import react_fc from 'react-fc';
 import FusionCharts from 'fusioncharts';
 import Chart from 'fusioncharts/fusioncharts.charts';
-import TM from 'fusioncharts/themes/fusioncharts.theme.ocean';
+import Maps from 'fusioncharts/fusioncharts.maps';
+import World from 'fusionmaps/maps/fusioncharts.worldwithcountries';
+import TM from 'fusioncharts/themes/fusioncharts.theme.zune';
 import $ from 'jquery';
 
+World(FusionCharts);
 
 var GTDDashboard = function (options) {
+
+    var _reduce;
+    var _countBy;
 
     /***
     ** Function to convert data in CSV to JSON
     ***/
     var csvToJson = function (csvData) {
 
-        var rows=csvData.split("\n")
-        ,   jsonData=[]
-        ,   headers=rows[0].split(",")
-        ,   rowsLength = rows.length
+        var rows=csvData.split("\n"),
+            jsonData=[],
+            headers=rows[0].split(","),
+            rowsLength = rows.length;
 
         for (var i=1 ; i<rowsLength ; i++) {
-            var obj = {}
-            ,   currentline=rows[i].split(",")
-            ,   headersLength = headers.length;
+            var obj = {},
+                currentline=rows[i].split(","),
+                headersLength = headers.length;
 
             for(var j=0;j<headersLength;j++){
                 obj[headers[j]] = currentline[j];
@@ -52,12 +58,14 @@ var GTDDashboard = function (options) {
                 return result;
             };
         };
+
         _countBy = group(function(result, value, key) {
             if (_has(result, key)) result[key]++; else result[key] = 1;
         });
-        _has = function(obj, key) {
+        
+        var _has = function(obj, key) {
             return obj != null && Object.prototype.hasOwnProperty.call(obj, key);
-        };
+        },
         _each = function(obj, iteratee, context) {
             iteratee = iteratee;
             var i, length;
@@ -67,6 +75,7 @@ var GTDDashboard = function (options) {
             }
             return obj;
         };
+
     };
 
 
@@ -75,7 +84,7 @@ var GTDDashboard = function (options) {
     ** returning an array of all the values that contain
     ** all of the key-value pairs listed in properties.
     ***/
-    _where = function (list, key_value_pairs_to_be_searched) {
+    var _where = function (list, key_value_pairs_to_be_searched) {
         var list_length = list.length,
             data_result = [];
         if(typeof list === "object") {
@@ -165,8 +174,8 @@ var GTDDashboard = function (options) {
     ** and make a table with this data.
     ***/
     var gangNameList = function (data) {
-        var gang_priority_data = []
-        ,   gang_data = _countBy(data,function (d) {
+        var gang_priority_data = [],
+            gang_data = _countBy(data,function (d) {
                 return d["gname"];
             });
 
@@ -210,6 +219,7 @@ var GTDDashboard = function (options) {
         countBy();
         sumOf();
 
+
         /** Fetch CSV data **/
         $.ajax({
             url: '../data/globalterrorism.csv',
@@ -227,19 +237,19 @@ var GTDDashboard = function (options) {
     ** Function to render the GTD Dashboard's elements
     ***/
     var render = function (new_data) {
-        var map_data = []
-        ,   attack_data = []
-        ,   map
-        ,   gang_priority_data = []
-        ,   attack
-        ,   numberOfAttacksByCountryConfigs
-        ,   numberOfAttacksConfigs
-        ,   numberOfAttacksByCountryDataSource
-        ,   numberOfAttacksDataSource
-        ,   numberOfCasualtiesDataSource
-        ,   new_data_length = new_data.length
-        ,   numberOfCasualtiesConfigs
-        ,   chartHoverColor = "#81270C";
+        var map_data = [],
+            attack_data = [],
+            map,
+            gang_priority_data = [],
+            attack,
+            numberOfAttacksByCountryConfigs,
+            numberOfAttacksConfigs,
+            numberOfAttacksByCountryDataSource,
+            numberOfAttacksDataSource,
+            numberOfCasualtiesDataSource,
+            new_data_length = new_data.length,
+            numberOfCasualtiesConfigs,
+            chartHoverColor = "#81270C";
 
 
         /** Data and DataSource --- Pie Chart for "Number of Casualties" **/
@@ -277,10 +287,10 @@ var GTDDashboard = function (options) {
 
 
         /** Data and DataSource --- Map for "Number of Attacks by Country" **/
-        map = _countBy(new_data,function (d) {
+        map = _countBy(new_data, function (d) {
             return d["country_code"];
         });
-        for(d in map) {
+        for (var d in map) {
             map_data.push(
                 {
                     "id":d,
@@ -333,7 +343,7 @@ var GTDDashboard = function (options) {
         attack = _countBy(new_data,function (d) {
             return d["iyear"];
         });
-        for(d in attack) {
+        for (var d in attack) {
             attack_data.push(
                 {
                     "label":d,
@@ -389,12 +399,12 @@ var GTDDashboard = function (options) {
                 });
             },
             render: function () {
-                var that = this
-                ,   updated_attack_data = []
-                ,   updated_data = []
-                ,   updated_attack = []
-                ,   numberOfAttacksAnnotations
-                ,   numberOfAttacksByCountryAnnotations;
+                var that = this,
+                    updated_attack_data = [],
+                    updated_data = [],
+                    updated_attack = [],
+                    numberOfAttacksAnnotations,
+                    numberOfAttacksByCountryAnnotations;
 
 
                 /** Configuration options --- Column Chart for "Number of Attacks by Year" **/
@@ -521,7 +531,7 @@ var GTDDashboard = function (options) {
                                 };
                             if(args.value !== undefined) {
                                 that.state.yearSelected = "";
-                                that.filterCountry(args.id, event.sender.id)
+                                that.filterCountry(args.id, event.sender.id);
                                 createGroupItems();
                             }
                         }
@@ -547,27 +557,27 @@ var GTDDashboard = function (options) {
 
                     var new_num_killed = _reduce(updated_data,function(memo,num){
                         return memo+parseInt(num.nkill);
-                    },0)
-                    var new_num_wounded = _reduce(updated_data,function(memo,num){
+                    }, 0),
+                    new_num_wounded = _reduce(updated_data,function(memo,num){
                         return memo+parseInt(num.nwound);
-                    },0)
+                    },0),
                     casulty_data = [{
-                        "label":"Killed",
-                        "value":new_num_killed
-                    },
-                    {
-                        "label":"Wounded",
-                        "value":new_num_wounded
-                    }]
-                    gangNameList(updated_data)
-                    if(new_num_wounded !== 0 && new_num_killed !== 0) {
+                            "label":"Killed",
+                            "value":new_num_killed
+                        }, {
+                            "label":"Wounded",
+                            "value":new_num_wounded
+                        }];
+                    gangNameList(updated_data);
+
+                    if (new_num_wounded !== 0 && new_num_killed !== 0) {
                         numberOfCasualtiesConfigs.dataSource.data = casulty_data;
                     } else {
-                        numberOfCasualtiesConfigs.dataSource.data = []
+                        numberOfCasualtiesConfigs.dataSource.data = [];
                     }
 
                 } else if(that.state.countrySelected && that.state.countrySelected.length !== 0 && that.state.yearSelected && that.state.yearSelected.length !== 0) {
-                    updated_data_year = _where(new_data, {"iyear" : that.state.yearSelected, "country_code" : that.state.countrySelected});
+                    var updated_data_year = _where(new_data, {"iyear" : that.state.yearSelected, "country_code" : that.state.countrySelected});
                     var new_num_killed = _reduce(updated_data_year,function(memo,num){
                         return memo+parseInt(num.nkill);
                     },0)
@@ -646,5 +656,7 @@ var GTDDashboard = function (options) {
     };
 };
 
-            var k = new GTDDashboard();
-            k.execute();
+module.exports = GTDDashboard;
+
+var k = new GTDDashboard();
+k.execute();
