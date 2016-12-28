@@ -1,13 +1,12 @@
 import React from 'react';
 
-var FusionCharts = (typeof window !== "undefined" ? window['FusionCharts'] : 
+var ReactFC = {},
+    FusionCharts = (typeof window !== "undefined" ? window['FusionCharts'] : 
 		typeof global !== "undefined" ? global['FusionCharts'] : null);
 
 if (typeof FusionCharts === "undefined") {
 	FusionCharts = require('fusioncharts');
 }
-
-var react_fc = {};
 
 class R_FC extends React.Component {
     displayName () {
@@ -17,8 +16,8 @@ class R_FC extends React.Component {
         super(props);
 
         var global = this;
-        // Store the chart configuration in fc_configs
-        global.fc_configs = props;
+        // Store the chart configuration in fcConfigs
+        global.fcConfigs = props;
         global.state = props;
     }
     componentWillMount () {
@@ -29,7 +28,7 @@ class R_FC extends React.Component {
         global.setState(function (prevState, props) {
           return {
             renderAt: (prevState.renderAt || props.renderAt) || global.chartObj.id + '-container'
-          }
+          };
         });
     }
     componentDidMount () {
@@ -41,26 +40,26 @@ class R_FC extends React.Component {
         global.chartObj && global.chartObj.dispose();
     }
     componentDidUpdate () {
-        var global = this;
-        var arr_impacted_by;
+        var global = this,
+            arrImpactedBy;
 
-        if (global.fc_configs.type !== global.state.type) {
+        if (global.fcConfigs.type !== global.state.type) {
           global.chartObj.chartType(global.state.type);
         }
 
-        if (global.fc_configs.dataSource !== global.state.dataSource) {
+        if (global.fcConfigs.dataSource !== global.state.dataSource) {
           global.chartObj.setChartData(global.state.dataSource, global.state.dataFormat);
         }
         
-        arr_impacted_by = global.fc_configs.impactedBy;
-        if (arr_impacted_by && arr_impacted_by.length > 0 && 
-        		arr_impacted_by.indexOf(global.props.eventSource) > -1) {
-            global.chartObj.setChartAttribute(global.fc_configs);
-            global.chartObj.setChartData(global.fc_configs.dataSource);
+        arrImpactedBy = global.fcConfigs.impactedBy;
+        if (arrImpactedBy && arrImpactedBy.length > 0 && 
+        		arrImpactedBy.indexOf(global.props.eventSource) > -1) {
+            global.chartObj.setChartAttribute(global.fcConfigs);
+            global.chartObj.setChartData(global.fcConfigs.dataSource);
         }
     }
 
-    render (props) {
+    render () {
         var global = this;
         
         return (
@@ -69,7 +68,7 @@ class R_FC extends React.Component {
     }
 }
 
-react_fc.FusionCharts = R_FC;
+ReactFC.FusionCharts = R_FC;
 
-export default react_fc;
+export default ReactFC;
 

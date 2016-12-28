@@ -20,13 +20,12 @@ var _react = (typeof window !== "undefined" ? window['React'] : typeof global !=
 
 var _react2 = _interopRequireDefault(_react);
 
-var FusionCharts = typeof window !== "undefined" ? window['FusionCharts'] : typeof global !== "undefined" ? global['FusionCharts'] : null;
+var ReactFC = {},
+    FusionCharts = typeof window !== "undefined" ? window['FusionCharts'] : typeof global !== "undefined" ? global['FusionCharts'] : null;
 
 if (typeof FusionCharts === "undefined") {
     FusionCharts = require('fusioncharts');
 }
-
-var react_fc = {};
 
 var R_FC = (function (_React$Component) {
     _inherits(R_FC, _React$Component);
@@ -44,8 +43,8 @@ var R_FC = (function (_React$Component) {
         _get(Object.getPrototypeOf(R_FC.prototype), 'constructor', this).call(this, props);
 
         var global = this;
-        // Store the chart configuration in fc_configs
-        global.fc_configs = props;
+        // Store the chart configuration in fcConfigs
+        global.fcConfigs = props;
         global.state = props;
     }
 
@@ -77,26 +76,26 @@ var R_FC = (function (_React$Component) {
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate() {
-            var global = this;
-            var arr_impacted_by;
+            var global = this,
+                arrImpactedBy;
 
-            if (global.fc_configs.type !== global.state.type) {
+            if (global.fcConfigs.type !== global.state.type) {
                 global.chartObj.chartType(global.state.type);
             }
 
-            if (global.fc_configs.dataSource !== global.state.dataSource) {
+            if (global.fcConfigs.dataSource !== global.state.dataSource) {
                 global.chartObj.setChartData(global.state.dataSource, global.state.dataFormat);
             }
 
-            arr_impacted_by = global.fc_configs.impactedBy;
-            if (arr_impacted_by && arr_impacted_by.length > 0 && arr_impacted_by.indexOf(global.props.eventSource) > -1) {
-                global.chartObj.setChartAttribute(global.fc_configs);
-                global.chartObj.setChartData(global.fc_configs.dataSource);
+            arrImpactedBy = global.fcConfigs.impactedBy;
+            if (arrImpactedBy && arrImpactedBy.length > 0 && arrImpactedBy.indexOf(global.props.eventSource) > -1) {
+                global.chartObj.setChartAttribute(global.fcConfigs);
+                global.chartObj.setChartData(global.fcConfigs.dataSource);
             }
         }
     }, {
         key: 'render',
-        value: function render(props) {
+        value: function render() {
             var global = this;
 
             return _react2['default'].createElement('div', { className: global.state.className, id: global.state.renderAt });
@@ -106,9 +105,9 @@ var R_FC = (function (_React$Component) {
     return R_FC;
 })(_react2['default'].Component);
 
-react_fc.FusionCharts = R_FC;
+ReactFC.FusionCharts = R_FC;
 
-exports['default'] = react_fc;
+exports['default'] = ReactFC;
 module.exports = exports['default'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
