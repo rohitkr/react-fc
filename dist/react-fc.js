@@ -30,75 +30,74 @@ if (typeof FusionCharts === "undefined") {
 var R_FC = (function (_React$Component) {
     _inherits(R_FC, _React$Component);
 
-    _createClass(R_FC, [{
-        key: 'displayName',
-        value: function displayName() {
-            return 'FusionCharts';
-        }
-    }]);
-
     function R_FC(props) {
+        var _this = this;
+
         _classCallCheck(this, R_FC);
 
         _get(Object.getPrototypeOf(R_FC.prototype), 'constructor', this).call(this, props);
 
-        var global = this;
-        // Store the chart configuration in fcConfigs
-        global.fcConfigs = props;
-        global.state = props;
+        this.state = {
+            caption: props.name
+        };
+
+        this.fcConfig = props;
+        this.renderAt = props.renderAt;
+        // this.fcConfig.renderAt = undefined;
+
+        this.chartObj = new FusionCharts(this.fcConfig);
+
+        this.getRenderAt = function (e) {
+            return _this.renderAt || _this.chartObj.id + '-container';
+        };
     }
 
     _createClass(R_FC, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-
-            var global = this;
-
-            global.chartObj = new FusionCharts(this.state);
-            global.setState(function (prevState, props) {
-                return {
-                    renderAt: prevState.renderAt || props.renderAt || global.chartObj.id + '-container'
-                };
-            });
-        }
-    }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
             var global = this;
-            global.chartObj.render(global.state.renderAt);
+
+            global.chartObj.render(global.getRenderAt());
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            var global = this;
-            global.chartObj && global.chartObj.dispose();
+            this.chartObj && this.chartObj.dispose();
         }
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate() {
             var global = this,
+                fcConfig = global.fcConfig,
+                props = global.props,
+                chartObj = global.chartObj,
                 arrImpactedBy;
 
-            if (global.fcConfigs.type !== global.state.type) {
-                global.chartObj.chartType(global.state.type);
+            if (fcConfig.type !== props.type) {
+                chartObj.chartType(props.type);
             }
 
-            if (global.fcConfigs.dataSource !== global.state.dataSource) {
-                global.chartObj.setChartData(global.state.dataSource, global.state.dataFormat);
+            if (fcConfig.dataSource !== props.dataSource) {
+                chartObj.setChartData(props.dataSource, props.dataFormat);
             }
 
-            arrImpactedBy = global.fcConfigs.impactedBy;
-            if (arrImpactedBy && arrImpactedBy.length > 0 && arrImpactedBy.indexOf(global.props.eventSource) > -1) {
-                global.chartObj.setChartAttribute(global.fcConfigs);
-                global.chartObj.setChartData(global.fcConfigs.dataSource);
+            if (fcConfig.width !== props.width || fcConfig.height !== props.height) {
+                chartObj.resizeTo(props.width, props.height);
+            }
+
+            arrImpactedBy = fcConfig.impactedBy;
+            if (arrImpactedBy && arrImpactedBy.length > 0 && arrImpactedBy.indexOf(props.eventSource) > -1) {
+                chartObj.setChartAttribute(global.fcConfig);
+                chartObj.setChartData(fcConfig.dataSource);
             }
         }
     }, {
         key: 'render',
         value: function render() {
-            var global = this;
+            var global = this,
+                renderAt = global.getRenderAt();
 
-            return _react2['default'].createElement('div', { className: global.state.className, id: global.state.renderAt });
+            return _react2['default'].createElement('div', { className: global.state.className, id: renderAt });
         }
     }]);
 

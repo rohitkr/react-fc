@@ -6,6 +6,7 @@ import Chart from 'fusioncharts/fusioncharts.charts';
 import TM from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
 FusionCharts.ready(function () {
+    Chart(FusionCharts);
     var myDataSource = {
         chart: {
             caption: "Harry's SuperMart",

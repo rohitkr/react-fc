@@ -9,61 +9,67 @@ if (typeof FusionCharts === "undefined") {
 }
 
 class R_FC extends React.Component {
-    displayName () {
-        return ('FusionCharts');
-    }
     constructor (props) {
         super(props);
 
-        var global = this;
-        // Store the chart configuration in fcConfigs
-        global.fcConfigs = props;
-        global.state = props;
-    }
-    componentWillMount () {
-        
-        var global = this;
+        this.state = {
+            caption: props.name
+        };
 
-        global.chartObj = new FusionCharts(this.state);
-        global.setState(function (prevState, props) {
-          return {
-            renderAt: (prevState.renderAt || props.renderAt) || global.chartObj.id + '-container'
-          };
-        });
+        this.fcConfig = props;
+        this.renderAt = props.renderAt;
+        // this.fcConfig.renderAt = undefined;
+
+        this.chartObj = new FusionCharts(this.fcConfig);
+
+        this.getRenderAt  = (e) => {
+            return this.renderAt || this.chartObj.id + '-container';
+        }
     }
+
     componentDidMount () {
         var global = this;
-        global.chartObj.render(global.state.renderAt);
+
+        global.chartObj.render(global.getRenderAt());
     }
+
     componentWillUnmount () {
-        var global = this;
-        global.chartObj && global.chartObj.dispose();
+        this.chartObj && this.chartObj.dispose();
     }
+
     componentDidUpdate () {
         var global = this,
+            fcConfig = global.fcConfig,
+            props = global.props,
+            chartObj = global.chartObj,
             arrImpactedBy;
 
-        if (global.fcConfigs.type !== global.state.type) {
-          global.chartObj.chartType(global.state.type);
+        if (fcConfig.type !== props.type) {
+            chartObj.chartType(props.type);
         }
 
-        if (global.fcConfigs.dataSource !== global.state.dataSource) {
-          global.chartObj.setChartData(global.state.dataSource, global.state.dataFormat);
+        if (fcConfig.dataSource !== props.dataSource) {
+            chartObj.setChartData(props.dataSource, props.dataFormat);
+        }
+
+        if (fcConfig.width !== props.width || fcConfig.height !== props.height) {
+            chartObj.resizeTo(props.width, props.height);
         }
         
-        arrImpactedBy = global.fcConfigs.impactedBy;
-        if (arrImpactedBy && arrImpactedBy.length > 0 && 
-        		arrImpactedBy.indexOf(global.props.eventSource) > -1) {
-            global.chartObj.setChartAttribute(global.fcConfigs);
-            global.chartObj.setChartData(global.fcConfigs.dataSource);
+        arrImpactedBy = fcConfig.impactedBy;
+        if (arrImpactedBy && arrImpactedBy.length > 0 &&  arrImpactedBy.indexOf(props.eventSource) > -1) {
+            chartObj.setChartAttribute(global.fcConfig);
+            chartObj.setChartData(fcConfig.dataSource);
         }
+
     }
 
     render () {
-        var global = this;
-        
+        var global = this,
+            renderAt = global.getRenderAt();
+
         return (
-        	<div className={global.state.className} id={global.state.renderAt} />
+            <div className={global.state.className} id={renderAt} />
         );
     }
 }
