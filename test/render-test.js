@@ -1,13 +1,14 @@
+/* global FusionCharts, it, describe */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';
 
 import FC from 'fusioncharts';
-import Charts from 'fusioncharts/fusioncharts.charts';
-import react_fc from '../lib/react_fc';
+import charts from 'fusioncharts/fusioncharts.charts';
+import ReactFC from '../lib/react_fc';
 
-Charts(FC);
+charts(FC);
 
 class FCDashboard extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class FCDashboard extends React.Component {
 
         this.state = {
             name: 'React is cool',
+            id: props.id,
             type: 'Column2D',
             dataFormat: 'JSON',
             dataSource: {
@@ -31,17 +33,15 @@ class FCDashboard extends React.Component {
 
             size[e.target.name] = newWidth;
 
-            this.setState((prevProp, prop) => {
+            this.setState(() => {
                 return size;  
             });            
-        }
+        };
 
         this.updateCaption  = (e) => {
             var newName = e.target.value;
 
-            this.setState((prevProp, props) => {
-                var data = prevProp;
-
+            this.setState((prevProp) => {
                 return {
                     dataSource: {
                         chart: {
@@ -51,44 +51,66 @@ class FCDashboard extends React.Component {
                     }
                 };
             });
-        }
+        };
     }
 
     render() {
         return (
             <div>
                 <h1>Hello World!</h1>
-                <p> Chart Caption:
-                    <input ref="input" onChange={this.updateCaption} value={this.state.dataSource.chart.caption} />
-                    <p/>
+                <p>
+                	Chart Caption:
+                    <input ref="caption" onChange={this.updateCaption} value={this.state.dataSource.chart.caption} />
+	            	<p></p>
                     Width:
-                    <input ref="input" name="width" onChange={this.updateSize} value={this.state.width} />
+                    <input ref="width" name="width" onChange={this.updateSize} value={this.state.width} />
+                    
                     Height:
-                    <input ref="height" name="height" onChange={this.updateSize} value={this.state.height} />
-                </p>
-                <ReactFC.FusionCharts {...this.state} />
-                <p></p>
+                    <input ref="height" name="height" onChange={this.updateSize} value={this.state.height} />                	
+             	</p>
+            	<ReactFC.FusionCharts ref="fusioncharts" {...this.state} />
+            	<p></p>
             </div>
         );
     }
 }
 
 describe('root', function () {
-  	it('\n\nFusionCharts renders without problems', function () {
-    	var root = TestUtils.renderIntoDocument(<FCDashboard/>);
+
+  	it('FusionCharts renders without problems', function () {
+    	var root = TestUtils.renderIntoDocument(<FCDashboard id="chart-1" />);
     	expect(root).toExist();
   	});
 
-  	it('changes without problems', function () {
-    	var root = TestUtils.renderIntoDocument(<FCDashboard/>);
+  	it('Caption changes without problems', function () {
+    	var root = TestUtils.renderIntoDocument(<FCDashboard id="chart-2" />);
 
-    	const inputNode = ReactDOM.findDOMNode(root.refs.input);
+    	const caption = ReactDOM.findDOMNode(root.refs.caption),
+  			  chartObj = FusionCharts.items['chart-2'],
+  			  newValue = 'New Caption Text';
 
-    	const newValue = 'some text';
-    	inputNode.value = newValue;
-    	TestUtils.Simulate.change(inputNode);
+    	caption.value = newValue;
+    	TestUtils.Simulate.change(caption);
 
-    	const nameNode = ReactDOM.findDOMNode(root.refs.name);
-    	expect(nameNode.textContent).toEqual(newValue);
+    	expect(chartObj.getChartAttribute('caption')).toEqual(newValue);
   	});
+
+  	it('Chart resize without problems', function () {
+    	var root = TestUtils.renderIntoDocument(<FCDashboard id="chart-3" />);
+
+    	const width = ReactDOM.findDOMNode(root.refs.width),
+    		  height = ReactDOM.findDOMNode(root.refs.height),
+			  chartObj = FusionCharts.items['chart-3'],
+    	      nWidth = '800',
+    	      nHeight = '400';
+
+    	width.value = nWidth;
+    	height.value = nHeight;
+    	TestUtils.Simulate.change(width);
+    	TestUtils.Simulate.change(height);
+    	
+    	expect(chartObj.width).toEqual(nWidth);
+    	expect(chartObj.height).toEqual(nHeight);
+  	});
+
 });

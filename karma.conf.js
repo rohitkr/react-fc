@@ -1,5 +1,3 @@
-var webpack = require('webpack');
-
 module.exports = function (config) {
 
   config.set({
@@ -29,6 +27,8 @@ module.exports = function (config) {
                 }]
 	        }
 	    },
+	    // "reporters": ['spec', 'coverage'],
+	    // "reporters": ['coverage'],
 	    "reporters": [ "dots" ],
 	    "webpackServer": {
 	        "noInfo": true

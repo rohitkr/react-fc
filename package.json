@@ -62,7 +62,7 @@
     "publish:site": "NODE_ENV=production gulp publish:examples",
     "release": "NODE_ENV=production gulp release",
     "start": "gulp dev",
-    "test": "karma start",
+    "test": "node scripts/index.js",
     "jsunit": "karma start karma.conf.js",
     "watch": "gulp watch:lib"
   },

@@ -41,10 +41,11 @@ function runTests (index) {
         if (error) {
             log(`exec error: ${error} ${stdout}`);
             return;
-        }
-        log(`SUCCESS: ${command.script} \n ${stdout}\n`);
-        if (++index < commands.length) {
-	        runTests(index);
+        } else {
+	        log(`SUCCESS: ${command.script} \n ${stdout}\n`);
+	        if (++index < commands.length) {
+		        runTests(index);
+	        }
         }
     });
 }

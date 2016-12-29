@@ -22,9 +22,9 @@ class R_FC extends React.Component {
 
         this.chartObj = new FusionCharts(this.fcConfig);
 
-        this.getRenderAt  = (e) => {
+        this.getRenderAt  = () => {
             return this.renderAt || this.chartObj.id + '-container';
-        }
+        };
     }
 
     componentDidMount () {
