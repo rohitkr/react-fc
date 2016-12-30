@@ -78,15 +78,15 @@ class FCDashboard extends React.Component {
 describe('root', function () {
 
   	it('FusionCharts renders without problems', function () {
-    	var root = TestUtils.renderIntoDocument(<FCDashboard id="chart-1" />);
+    	var root = TestUtils.renderIntoDocument(<FCDashboard id="chart1" />);
     	expect(root).toExist();
   	});
 
   	it('Caption changes without problems', function () {
-    	var root = TestUtils.renderIntoDocument(<FCDashboard id="chart-2" />);
+    	var root = TestUtils.renderIntoDocument(<FCDashboard id="chart2" />);
 
     	const caption = ReactDOM.findDOMNode(root.refs.caption),
-  			  chartObj = FusionCharts.items['chart-2'],
+  			  chartObj = FusionCharts.items['chart2'],
   			  newValue = 'New Caption Text';
 
     	caption.value = newValue;
@@ -96,11 +96,11 @@ describe('root', function () {
   	});
 
   	it('Chart resize without problems', function () {
-    	var root = TestUtils.renderIntoDocument(<FCDashboard id="chart-3" />);
+    	var root = TestUtils.renderIntoDocument(<FCDashboard id="chart3" />);
 
     	const width = ReactDOM.findDOMNode(root.refs.width),
     		  height = ReactDOM.findDOMNode(root.refs.height),
-			  chartObj = FusionCharts.items['chart-3'],
+			  chartObj = FusionCharts.items['chart3'],
     	      nWidth = '800',
     	      nHeight = '400';
 
@@ -114,3 +114,5 @@ describe('root', function () {
   	});
 
 });
+
+
