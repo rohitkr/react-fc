@@ -61,7 +61,7 @@ class FCDashboard extends React.Component {
                 <p>
                 	Chart Caption:
                     <input ref="caption" onChange={this.updateCaption} value={this.state.dataSource.chart.caption} />
-	            	<p></p>
+
                     Width:
                     <input ref="width" name="width" onChange={this.updateSize} value={this.state.width} />
                     

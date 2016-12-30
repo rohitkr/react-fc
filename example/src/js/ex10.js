@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import react_fc from 'react-fc';
 import FusionCharts from 'fusioncharts';
-import Chart from 'fusioncharts/fusioncharts.charts';
-import Map from 'fusioncharts/fusioncharts.maps';
-import Usa from 'fusioncharts/maps/fusioncharts.usa';
+import charts from 'fusioncharts/fusioncharts.charts';
+import maps from 'fusioncharts/fusioncharts.maps';
+import usaMap from 'fusioncharts/maps/fusioncharts.usa';
 import TM from 'fusioncharts/themes/fusioncharts.theme.fint';
 
 
-Usa(FusionCharts);
+// Load the charts, maps, usaMap module pass FusionCharts as dependency
+charts(FusionCharts);
+maps(FusionCharts);
+usaMap(FusionCharts);
 
 FusionCharts.ready(function () {
     var myDataSource = {

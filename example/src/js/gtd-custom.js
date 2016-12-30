@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import react_fc from 'react-fc';
 import FusionCharts from 'fusioncharts';
-import Chart from 'fusioncharts/fusioncharts.charts';
-import Maps from 'fusioncharts/fusioncharts.maps';
-import World from 'fusionmaps/maps/fusioncharts.worldwithcountries';
+import charts from 'fusioncharts/fusioncharts.charts';
+import maps from 'fusioncharts/fusioncharts.maps';
+import worldMap from 'fusionmaps/maps/fusioncharts.worldwithcountries';
 import TM from 'fusioncharts/themes/fusioncharts.theme.zune';
 import $ from 'jquery';
 
-World(FusionCharts);
+
+// Load the charts, maps, worldwithcountries module pass FusionCharts as dependency
+charts(FusionCharts);
+maps(FusionCharts);
+worldMap(FusionCharts);
 
 var GTDDashboard = function (options) {
 

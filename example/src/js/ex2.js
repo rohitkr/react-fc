@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import react_fc from 'react-fc';
 import FusionCharts from 'fusioncharts';
-import Chart from 'fusioncharts/fusioncharts.charts';
+import charts from 'fusioncharts/fusioncharts.charts';
 import TM from 'fusioncharts/themes/fusioncharts.theme.ocean';
+
+// Load the charts module pass FusionCharts as dependency
+charts(FusionCharts);
 
 FusionCharts.ready(function () {
     var myDataSource = {
