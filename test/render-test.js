@@ -55,6 +55,10 @@ class FCDashboard extends React.Component {
     }
 
     render() {
+    	/** todo: 
+		* Removing the below console.log throws error while running the test
+		*/
+    	console.log("________TESTING___________");
         return (
             <div>
                 <h1>Hello World!</h1>
